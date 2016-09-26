@@ -35,12 +35,23 @@ public class Parser {
 			}
 			
 			// convert it to a Device object
+			Device device;
 			try {
-				Device device = parseDevice(jsonDevice);
-				devices.add(device);
+				device = parseDevice(jsonDevice);
 			} catch (DeviceException e) {
 				System.err.println("Device " + i + " is invalid. " + e.getMessage());
+				continue;
 			}
+			
+			// check it's unique
+			for(int j = 0; j < i; j++){
+				Device otherDevice = devices.get(j);
+				if(otherDevice.getBrand().equals(device.getBrand()) && otherDevice.getModel().equals(device.getModel())){
+					System.err.println("Device " + i + " is invalid. Has same Brand and Model as device " + j);
+				}
+			}
+			
+			devices.add(device);
 		}
 		
 		return devices;
