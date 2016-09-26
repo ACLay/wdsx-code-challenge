@@ -93,15 +93,16 @@ public class Parser {
 			} catch (ClassCastException e) {
 				throw new DeviceException("Attribute " + i + " is not a json object");
 			}
-			String name = attribute.getString("name");
-			String value = attribute.getString("value");
+			String name;
+			String value;
 			try {
 				name = attribute.getString("name");
 			} catch (NullPointerException e) {
 				throw new DeviceException("Attribute " + i + " has no name");
 			} catch (ClassCastException e) {
 				throw new DeviceException("Attribute " + i + " has no name");
-			}try {
+			}
+			try {
 				value = attribute.getString("value");
 			} catch (NullPointerException e) {
 				throw new DeviceException("Attribute " + i + " has no value");
@@ -112,7 +113,7 @@ public class Parser {
 			if (name.length() > 20) {
 				throw new DeviceException("Attribute " + i + " name too long, 20 characters max");
 			}
-			if (value.length() > 20) {
+			if (value.length() > 100) {
 				throw new DeviceException("Attribute " + i + " value too long, 100 characters max");
 			}
 			attributes.put(name, value);
