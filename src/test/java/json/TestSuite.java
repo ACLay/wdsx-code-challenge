@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	Story1.class,
 	Story2.class,
+	Story3.class,
 	Story4.class
 })
 
