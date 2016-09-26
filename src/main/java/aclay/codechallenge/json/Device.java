@@ -7,13 +7,13 @@ public class Device {
 
 	private String brand;
 	private String model;
-	private String formFactor;
+	private FormFactor form;
 	private Map<String, String> attributes;
 	
-	public Device(String brand, String model, String formFactor, Map<String, String> attributes){
+	public Device(String brand, String model, FormFactor form, Map<String, String> attributes){
 		this.brand = brand;
 		this.model = model;
-		this.formFactor = formFactor;
+		this.form = form;
 		this.attributes = attributes;
 	}
 	
@@ -23,8 +23,8 @@ public class Device {
 	public String getModel(){
 		return model;
 	}
-	public String getFormFactor(){
-		return formFactor;
+	public FormFactor getFormFactor(){
+		return form;
 	}
 	public Set<String> getAttributeNames(){
 		return attributes.keySet();
